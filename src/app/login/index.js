@@ -6,5 +6,4 @@ module.exports = require('angular')
     ])
     .config(require('./route'))
     .controller('LogInCtrl', require('./controllers/LogInCtrl'))
-    .factory('LoginUserService', require('./services/LoginUserService'))
     .name;

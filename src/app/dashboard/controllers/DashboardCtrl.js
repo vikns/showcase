@@ -5,14 +5,24 @@ module.exports = DashboardCtrl;
 /**
  * @ngInject
  */
-function DashboardCtrl($location,DashboardDataService,LoginUserService) {
+function DashboardCtrl($location,DashboardDataService,UserService) {
     var vm = this;
-    if (!LoginUserService.isLoggedIn()) {
-        $location.path('/');
+    if (!UserService.isLoggedIn()) {
+        goHome();
     }
 
     vm.fetch = function(){
         DashboardDataService.fetch();
+    }
+
+    vm.logOut = function() {
+        UserService.logOut(function(successful){
+            goHome();
+        })
+    }
+
+    function goHome() {
+        $location.path('/');
     }
 }
 
