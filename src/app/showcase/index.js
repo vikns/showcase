@@ -5,8 +5,11 @@ require('angular')
         /* 3rd Party */
         require('angular-ui-router'),
 
-        /* Custom */
-        require('../signup')
+        /* Sign Up */
+        require('../signup'),
+
+        /* Log In */
+        require('../login')
     ])
     .config(require('./config'))
     .config(require('./route'));
