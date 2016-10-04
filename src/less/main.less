@@ -3,3 +3,22 @@
 body {
   background: #eeeeee;
 }
+
+table {
+  width: 100%;
+
+  th {
+    background-color: #8888FF;
+  }
+
+
+  tr {
+    &:nth-child(even) {
+      background-color: #E0E0E0;
+    }
+
+    &:nth-child(odd) {
+      background-color: white;
+    }
+  }
+}
