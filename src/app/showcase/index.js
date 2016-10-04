@@ -4,6 +4,7 @@ require('angular')
     .module('bookbottles.showcase', [
         /* 3rd Party */
         require('angular-ui-router'),
+        require('angularfire'),
 
         /* Sign Up */
         require('../signup'),

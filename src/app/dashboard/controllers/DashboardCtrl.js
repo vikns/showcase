@@ -1,18 +1,22 @@
 'use strict';
 
 module.exports = DashboardCtrl;
-
 /**
  * @ngInject
  */
-function DashboardCtrl($location,DashboardDataService,UserService) {
+function DashboardCtrl($scope,$location,$firebaseObject,UserService) {
     var vm = this;
-    if (!UserService.isLoggedIn()) {
-        goHome();
-    }
+    //if (!UserService.isLoggedIn()) {
+    //    goHome();
+    //}
 
-    vm.fetch = function(){
-        DashboardDataService.fetch();
+    synchronizeTable();
+
+    function synchronizeTable() {
+        var firebase=require('firebase');
+        var refProperties=firebase.database().ref().child("properties");
+        var syncObject = $firebaseObject(refProperties);
+        syncObject.$bindTo($scope,"properties");
     }
 
     vm.logOut = function() {

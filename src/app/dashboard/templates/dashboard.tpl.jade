@@ -1,5 +1,10 @@
 h1 Welcome. This is your dashboard
 div
-    h2 Data
+    h2 Your properties
+    table
+        tr
+            th Name
+        tr(ng-repeat='property in properties')
+            td {{property}}
 div
     button(ng-click='vm.logOut()') Log out
