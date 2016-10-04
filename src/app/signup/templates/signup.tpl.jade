@@ -1,9 +1,12 @@
 h1 Sign Up
 div
-    h2 Email
-    input(ng-model='email')
-    h2 Password
-    input(ng-model='password' type='password')
+    form(name='signupForm')
+        h2 Email
+        input(ng-model='email' name='email' type='email' required)
+        span(ng-show='signupForm.email.$dirty && !signupForm.email.$valid') Email is invalid
+        h2 Password
+        input(ng-model='password' name='password' type='password' required)
+        span(ng-show='signupForm.password.$dirty && !signupForm.password.$valid') Password is required
     div
-        button.btn.btn-default(ng-click='vm.signUp()') Create User
+        button.btn.btn-default(ng-click='vm.signUp()' ng-disabled='!(signupForm.email.$valid && signupForm.password.$valid)') Create User
 a(ui-sref="home") Home
