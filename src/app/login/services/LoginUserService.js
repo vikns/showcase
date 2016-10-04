@@ -5,17 +5,30 @@ module.exports = LoginUserService;
 /**
  * @ngInject
  */
+var loginState = false;
 function LoginUserService() {
     var UserService = {
-        login: login
+        logIn: login,
+        isLoggedIn: isLoggedIn
     };
 
     return UserService;
 
     //////////
 
-    function login() {
-        console.debug('Creating a user');
+    function login(email,password,cb) {
+        console.log('Log in',email,password);
+        if (email=="bookbottles" && password=="showcase") {
+            loginState = true;
+            cb(true)
+        }
+        else {
+            loginState = false;
+            cb(false)
+        }
+    }
+    function isLoggedIn() {
+        return loginState;
     }
 }
 
